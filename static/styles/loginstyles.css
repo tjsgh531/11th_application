@@ -1,0 +1,73 @@
+/* font설정 */
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0 auto;
+    padding: 0px;
+    background-color: #1C1B1A;
+}
+section {
+    width: 1024px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    font-family: Pretendard-Regular;
+    color: #ffffff;
+    font-size: 14px;
+}
+.loginwrap {
+    width: 535px;
+    height: 371px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    border: 3px solid #ffffff;
+    border-radius: 30px;
+}
+.loginTitle {
+    font-family: Pretendard-SemiBold;
+    font-size: 36px;
+    color: #FF7710;
+}
+.linewrap {
+    width: 485px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+hr {
+    width: 195px;
+    height: 0px;
+}

@@ -2,10 +2,14 @@ const path = require('path')
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.js',
+  entry: {
+    index : './src/index.js',
+    applyevent : './src/applyevent.js',
+    localStorage : './src/localStorage.js',
+  },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   performance: {
     maxEntrypointSize: 1024000,
