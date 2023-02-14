@@ -1,174 +1,133 @@
 import * as THREE from 'three'
 import { WEBGL } from './webgl'
-import './modal'
+import { Script } from './script.js';
 
+const script = new Script();
 if (WEBGL.isWebGLAvailable()) {
-  var camera, scene, renderer
-  var plane
-  var mouse,
-    raycaster,
-    isShiftDown = false
 
-  var rollOverMesh, rollOverMaterial
-  var cubeGeo, cubeMaterial
+  const FogColor = 0x004fff;
+  const BackgroundColor = 0x000000;
+  const particlesCnt = 5000;
+  let default_camera_pos = 0;
 
-  var objects = []
+  /*
+  window.addEventListener('click', ()=>{
+    window.alert("wait");
+  });
+  */
+ 
+  //장면 
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(BackgroundColor);
+  scene.fog = new THREE.FogExp2(FogColor, 0.7, 1.4, 2);
 
-  init()
-  render()
+  
+  //카메라(1.5 ~ -1.5)
+  const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.001, 1.5);
+  //const cmhelper = new THREE.CameraHelper(camera);
 
-  function init() {
-    camera = new THREE.PerspectiveCamera(
-      45,
-      window.innerWidth / window.innerHeight,
-      1,
-      10000
-    )
-    camera.position.set(500, 800, 1300)
-    camera.lookAt(0, 0, 0)
+  camera.position.set(0, 0, 1);
+  camera.lookAt(new THREE.Vector3(0, 0, 0));
+  scene.add(camera);
+  //scene.add(cmhelper);
 
-    scene = new THREE.Scene()
-    scene.background = new THREE.Color(0xf0f0f0)
+  //마우스 이벤트
+  //마우스 위치에 따라 하자
+  let speed = 0.001;
+  
+  window.addEventListener('mousemove',(e)=>{
+    
+    //speed = 0.005*(Math.abs(sizes.width/2 - e.clientX) / (sizes.width/2) + Math.abs(sizes.height/2 - e.clientY) / (sizes.height / 2));
+    speed = 0.004* (Math.abs(sizes.width/2 - e.clientX) / (sizes.width/2));
 
-    var rollOverGeo = new THREE.BoxBufferGeometry(50, 50, 50)
-    rollOverMaterial = new THREE.MeshBasicMaterial({
-      color: 0xff0000,
-      opacity: 0.5,
-      transparent: true,
-    })
-    rollOverMesh = new THREE.Mesh(rollOverGeo, rollOverMaterial)
-    scene.add(rollOverMesh)
+    if(speed <= 0.001) speed = 0.001;
+  });
 
-    cubeGeo = new THREE.BoxBufferGeometry(50, 50, 50)
-    cubeMaterial = new THREE.MeshLambertMaterial({
-      color: 0xfeb74c,
-      map: new THREE.TextureLoader().load('static/textures/square.png'),
-    })
 
-    var gridHelper = new THREE.GridHelper(1000, 20)
-    scene.add(gridHelper)
+  // 랜더러
+  const canvas = document.getElementById('c');
+  const renderer = new THREE.WebGLRenderer({
+    alpha : true,
+    antialias : true,
+    canvas : canvas,
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    raycaster = new THREE.Raycaster()
-    mouse = new THREE.Vector2()
 
-    var geometry = new THREE.PlaneBufferGeometry(1000, 1000)
-    geometry.rotateX(-Math.PI / 2)
+  // 빛
+  const pointLight = new THREE.PointLight(0xffffff, 0.1);
+  pointLight.position.x = 2;
+  pointLight.position.x = 3;
+  pointLight.position.x = 4;
+  scene.add(pointLight);
 
-    plane = new THREE.Mesh(
-      geometry,
-      new THREE.MeshBasicMaterial({ visible: false })
-    )
-    scene.add(plane)
+  
+  /* 오브젝트 */
+    // geometry
+    const geometry = new THREE.BufferGeometry;
 
-    objects.push(plane)
+    const posArray = new Float32Array(particlesCnt * 3);
 
-    var ambientLight = new THREE.AmbientLight(0x606060)
-    scene.add(ambientLight)
-
-    var directionalLight = new THREE.DirectionalLight(0xffffff)
-    directionalLight.position.set(1, 0.75, 0.5).normalize()
-    scene.add(directionalLight)
-
-    renderer = new THREE.WebGLRenderer({ antialias: true })
-    renderer.setPixelRatio(window.devicePixelRatio)
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    document.body.appendChild(renderer.domElement)
-
-    document.addEventListener('mousemove', onDocumentMouseMove, false)
-    document.addEventListener('mousedown', onDocumentMouseDown, false)
-    document.addEventListener('keydown', onDocumentKeyDown, false)
-    document.addEventListener('keyup', onDocumentKeyUp, false)
-    window.addEventListener('resize', onWindowResize, false)
-  }
-
-  function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-
-    renderer.setSize(window.innerWidth, window.innerHeight)
-  }
-
-  function onDocumentMouseMove(event) {
-    event.preventDefault()
-
-    mouse.set(
-      (event.clientX / window.innerWidth) * 2 - 1,
-      -(event.clientY / window.innerHeight) * 2 + 1
-    )
-
-    raycaster.setFromCamera(mouse, camera)
-
-    var intersects = raycaster.intersectObjects(objects)
-
-    if (intersects.length > 0) {
-      var intersect = intersects[0]
-
-      rollOverMesh.position.copy(intersect.point).add(intersect.face.normal)
-      rollOverMesh.position
-        .divideScalar(50)
-        .floor()
-        .multiplyScalar(50)
-        .addScalar(25)
+    for(let i = 0 ; i < particlesCnt * 3; i++){
+      posArray[i] = (Math.random()-0.5) * (Math.random() * 4);
     }
 
-    render()
+    geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+    // material
+    const material = new THREE.PointsMaterial({
+      size: 0.0055,
+    });
+
+    // Mesh
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+
+  // 애니메이션
+  function animate(){
+    requestAnimationFrame(animate);
+    camera.position.z = 1.2 * Math.cos(-default_camera_pos*1.5);
+    camera.position.x =  Math.cos(default_camera_pos);
+    camera.position.y =  Math.sin(default_camera_pos); 
+    default_camera_pos += speed;
+
+    camera.lookAt(new THREE.Vector3(0,0,0));
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  
+  // 리사이징
+  const sizes = {
+    width: window.innerWidth,
+    height : window.innerHeight,
   }
 
-  function onDocumentMouseDown(event) {
-    event.preventDefault()
+  const wrap = document.querySelector('.wrap');
+  window.addEventListener('resize', ()=>{
+    //Update size
+    sizes.width = window.innerWidth;
+    sizes.height = window.innerHeight;
 
-    mouse.set(
-      (event.clientX / window.innerWidth) * 2 - 1,
-      -(event.clientY / window.innerHeight) * 2 + 1
-    )
+    //update Elements
+    wrap.style.width = `${sizes.width}px`;
+    wrap.style.height = `${sizes.height}px`;
 
-    raycaster.setFromCamera(mouse, camera)
+    // UPdate camerea
+    camera.aspect = sizes.width / sizes.height;
+    camera.updateProjectionMatrix();
 
-    var intersects = raycaster.intersectObjects(objects)
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    if (intersects.length > 0) {
-      var intersect = intersects[0]
+    // Update MouseEvent
+    mouseEvent.resizing(sizes.width, sizes.height);
+  });
 
-      if (isShiftDown) {
-        if (intersect.object !== plane) {
-          scene.remove(intersect.object)
-
-          objects.splice(objects.indexOf(intersect.object), 1)
-        }
-
-      } else {
-        var voxel = new THREE.Mesh(cubeGeo, cubeMaterial)
-        voxel.position.copy(intersect.point).add(intersect.face.normal)
-        voxel.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25)
-        scene.add(voxel)
-
-        objects.push(voxel)
-      }
-
-      render()
-    }
-  }
-
-  function onDocumentKeyDown(event) {
-    switch (event.keyCode) {
-      case 16:
-        isShiftDown = true
-        break
-    }
-  }
-
-  function onDocumentKeyUp(event) {
-    switch (event.keyCode) {
-      case 16:
-        isShiftDown = false
-        break
-    }
-  }
-
-  function render() {
-    renderer.render(scene, camera)
-  }
 } else {
-  var warning = WEBGL.getWebGLErrorMessage()
-  document.body.appendChild(warning)
+  var warning = WEBGL.getWebGLErrorMessage();
+  document.body.appendChild(warning);
 }
