@@ -23,7 +23,7 @@
                     <img src="{% static 'img/line2.png' %}" class="line two"/>
                     <img src="{% static 'img/line3.png' %}" class="line three"/>
                     <img src="{% static 'img/line4.png' %}" class="line four"/>
-                </div>
+               </div>
                 <div class="pagination">
                     <div class="box1"></div>
                     <div class="box2"></div>
@@ -31,8 +31,8 @@
                     <div class="box4"></div>
                 </div>
             </div>
-            <div class="questionbox">
-                <form class="post" action="{% url 'apply' %}" method="post">
+            <form class="questionbox" action="{% url 'apply' %}" method="post">
+                <div class="post">
                     <div class="namE">
                         <label for="name"><span>*</span>  성명</label>
                         <input type="text" id="name" name="name" />
@@ -83,28 +83,26 @@
                                 
                         </div>
                     </div>
-                </form>
-                <form>
-                    <div class ="post">
-                        <div class="q1">
-                            <label for="question1">1. 다양한 IT동아리 중에서 멋쟁이사자처럼 대학 11기를 선택하고 지원하시게 된 이유를 작성해주세요. (500자 이내)</label><br/>
-                            <textarea name="question1" id="question1" maxlength="500" tabindex = "-1"></textarea>
-                            <div class="count">
-                                <p class="textC1">0</p>
-                                <p class="textF1">/ 500</p>
-                            </div>
-                        </div>
-                        <div class="q2">
-                            <label for="question2">2.개발경험 어쩌구 질문</label><br/>
-                            <textarea name="question2" id="question2" maxlength="300" tabindex = "-1"></textarea>
-                            <div class="count">
-                                <p class="textC2">0</p>
-                                <p class="textF2">/ 300</p>
-                            </div>
+                </div>
+                <div class="post">
+                    <div class="q1">
+                        <label for="question1">1. 다양한 IT동아리 중에서 멋쟁이사자처럼 대학 11기를 선택하고 지원하시게 된 이유를 작성해주세요. (500자 이내)</label><br/>
+                        <textarea name="question1" id="question1" maxlength="500" tabindex = "-1"></textarea>
+                        <div class="count">
+                            <p class="textC1">0</p>
+                            <p class="textF1">/ 500</p>
                         </div>
                     </div>
-                </form>
-                <form class="post">
+                    <div class="q2">
+                        <label for="question2">2.개발경험 어쩌구 질문</label><br/>
+                        <textarea name="question2" id="question2" maxlength="300" tabindex = "-1"></textarea>
+                        <div class="count">
+                            <p class="textC2">0</p>
+                            <p class="textF2">/ 300</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
                     <div class="q3">
                         <label for="question3">3. 멋쟁이사자처럼 대학은 협업과 팀워크를 중요한 가치로 생각하는 공동체입니다. 지원자 본인이 협업과 팀워크를 진행
                             <br/>해보았던 경험과, 그 경험을 멋쟁이 사자처럼 대학에서 어떻게 적용시킬 수 있을지 작성해주세요. (500자 이내)</label><br/>
@@ -122,13 +120,13 @@
                             <p class="textF4">/ 500</p>
                         </div>
                     </div>
-                </form>
-                <form class="post">
+                </div>
+                <div class="post">
                     <div class="q5">
                         <label for="question5">5. 만들고싶은 웹 서비스가 있다면 간단히 소개해주세요.</label><br/>
                         <textarea name="question5" id="question5" tabindex = "-1"></textarea>
                     </div>
-                </form>
+                </div>
                 <div class="btnwrap">
                     <div class="prevbtn" onclick="togglePrevBtn()">
                         <i class="fa-solid fa-angle-left"></i>
@@ -144,7 +142,7 @@
                         <img>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
     <footer></footer>
