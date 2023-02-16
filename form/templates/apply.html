@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>멋쟁이사자처럼XGNU 11기</title>
-    <script src="../src/jquery-3.6.3.min.js"></script>
+    <script src="{% static 'src/jquery-3.6.3.min.js' %}"></script>
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../static/styles/applystyle.css">
-    <script src="../public/applyevent.js" defer></script>
-    <script src="../public/localStorage.js" defer></script>
+    <link rel="stylesheet" href="{% static 'styles/applystyle.css'%}" type="text/css">
+    <script src="{% static 'public/applyevent.js' %}" defer></script>
+    <script src="{% static 'public/localStorage.js' %}" defer></script>
 </head>
 <body>
     <header></header>
@@ -18,10 +19,10 @@
             <div class="applyhead">
                 <h2>멋쟁이사자처럼 11기 지원신청</h2>
                 <div class="linewrap">
-                    <img src="../static/img/line1.png" class="line one"/>
-                    <img src="../static/img/line2.png" class="line two"/>
-                    <img src="../static/img/line3.png" class="line three"/>
-                    <img src="../static/img/line4.png" class="line four"/>
+                    <img src="{% static 'img/line1.png' %}" class="line one"/>
+                    <img src="{% static 'img/line2.png' %}" class="line two"/>
+                    <img src="{% static 'img/line3.png' %}" class="line three"/>
+                    <img src="{% static 'img/line4.png' %}" class="line four"/>
                 </div>
                 <div class="pagination">
                     <div class="box1"></div>
@@ -31,7 +32,7 @@
                 </div>
             </div>
             <div class="questionbox">
-                <form class="post">
+                <form class="post" action="{% url 'apply' %}" method="post">
                     <div class="namE">
                         <label for="name"><span>*</span>  성명</label>
                         <input type="text" id="name" name="name" />
@@ -83,21 +84,23 @@
                         </div>
                     </div>
                 </form>
-                <form class="post">
-                    <div class="q1">
-                        <label for="question1">1. 다양한 IT동아리 중에서 멋쟁이사자처럼 대학 11기를 선택하고 지원하시게 된 이유를 작성해주세요. (500자 이내)</label><br/>
-                        <textarea name="question1" id="question1" maxlength="500" tabindex = "-1"></textarea>
-                        <div class="count">
-                            <p class="textC1">0</p>
-                            <p class="textF1">/ 500</p>
+                <form>
+                    <div class ="post">
+                        <div class="q1">
+                            <label for="question1">1. 다양한 IT동아리 중에서 멋쟁이사자처럼 대학 11기를 선택하고 지원하시게 된 이유를 작성해주세요. (500자 이내)</label><br/>
+                            <textarea name="question1" id="question1" maxlength="500" tabindex = "-1"></textarea>
+                            <div class="count">
+                                <p class="textC1">0</p>
+                                <p class="textF1">/ 500</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="q2">
-                        <label for="question2">2.개발경험 어쩌구 질문</label><br/>
-                        <textarea name="question2" id="question2" maxlength="300" tabindex = "-1"></textarea>
-                        <div class="count">
-                            <p class="textC2">0</p>
-                            <p class="textF2">/ 300</p>
+                        <div class="q2">
+                            <label for="question2">2.개발경험 어쩌구 질문</label><br/>
+                            <textarea name="question2" id="question2" maxlength="300" tabindex = "-1"></textarea>
+                            <div class="count">
+                                <p class="textC2">0</p>
+                                <p class="textF2">/ 300</p>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -117,7 +120,8 @@
                         <div class="count">
                             <p class="textC4">0</p>
                             <p class="textF4">/ 500</p>
-                        </div></div>
+                        </div>
+                    </div>
                 </form>
                 <form class="post">
                     <div class="q5">
@@ -135,7 +139,7 @@
                         다음 단계
                         <i class="fa-solid fa-angle-right"></i>
                     </div>
-                    <div class="submitbtn">
+                    <div class="submitbtn" type="submit">
                         제출하기
                         <img>
                     </div>

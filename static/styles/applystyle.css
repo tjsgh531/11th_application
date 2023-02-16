@@ -220,7 +220,7 @@ input#personal:checked + label::before {
     height: 16px;
     display: inline-block;
     border: 1px solid #D9D9D9;
-    background-image: url('./images/check.svg');
+    background-image: url('../img/check.svg');
     background-size: 65%;
     background-position: center center;
     background-repeat: no-repeat;

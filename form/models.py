@@ -13,3 +13,6 @@ class formmodel(models.Model):
     que3 = models.TextField()
     que4 = models.TextField()
     que5 = models.TextField()
+
+    def __str__(self):
+        return self.name
