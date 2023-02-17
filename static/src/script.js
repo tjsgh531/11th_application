@@ -59,4 +59,6 @@ class Script{
     }
 }
 
-module.exports = {Script}
+window.onload = ()=>{
+    const script = new Script();
+}

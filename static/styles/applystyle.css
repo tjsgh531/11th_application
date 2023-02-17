@@ -225,7 +225,7 @@ input#personal:checked + label::before {
     background-repeat: no-repeat;
 }
 .personaL {
-    margin: 33px 0 10px 0;
+    margin: 25px 0 10px 0;
 }
 .perwrap {
     margin-bottom: 15px;
@@ -454,4 +454,11 @@ hr{
     top: 12px;
     opacity: 0;
     transition: opacity .3s;
+}
+
+.notice {
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+    color: #999999;
 }
