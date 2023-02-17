@@ -8,19 +8,20 @@
     <script src="{% static 'src/jquery-3.6.3.min.js' %}"></script>
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'styles/loginstyles.css' %}" type="text/css">
+
+    <script src="{% static 'public/index.js' %}" defer></script>
 </head>
 <body>
-    <header></header>
-    <section>
-        <div class="loginwrap">
-            <p class="loginTitle">SNS 로그인</p>
-            <div class="linewrap">
-                <hr>
-                <p>또는</p>
-                <hr>
+    <div class="wrap">        
+        <canvas id="c"></canvas>
+        <header></header>
+        <section>
+            <div class="loginwrap">
+                <p class="loginTitle">SNS 로그인</p>
+                <img src="{% static 'img/google.png' %}" style="margin:0px" width="250px">
             </div>
-        </div>
-    </section>
-    <footer></footer>
+        </section>
+        <footer></footer>
+    </div>
 </body>
 </html>
