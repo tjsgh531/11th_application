@@ -4,6 +4,8 @@ const grade = document.getElementById('grade');
 const phone = document.getElementById('phone');
 const email = document.getElementById('email');
 const personal = document.getElementById('personal');
+
+
 // 페이지슬라이더부분
 // 슬라이크 전체 크기(width 구하기)
 const slide = document.querySelector(".questionbox");
@@ -12,6 +14,13 @@ let slideWidth = slide.clientWidth;
 // 버튼 엘리먼트 선택하기
 const prevBtn = document.querySelector(".prevbtn");
 const nextBtn = document.querySelector(".nextbtn");
+const sub = document.getElementsByClassName('submitbtn');
+const two = document.getElementsByClassName('two');
+const three = document.getElementsByClassName('three');
+const four = document.getElementsByClassName('four');
+const box2 = document.getElementsByClassName('box2');
+const box3 = document.getElementsByClassName('box3');
+const box4 = document.getElementsByClassName('box4');
 
 // 슬라이드 전체를 선택해 값을 변경해주기 위해 슬라이드 전체 선택하기
 const slideItems = document.querySelectorAll(".post");
@@ -40,6 +49,45 @@ nextBtn.addEventListener("click", () => {
         } else {
             currSlide--;
         }
+    }
+    console.log(currSlide);
+    if (currSlide == 1) {
+        if( name.value == "" || major.value == "" || grade.value =="" ||
+        phone.value=="" || email.value == "" ) {
+            alert("필수 입력란이 비어있습니다. 확인해주세요.")
+            console.log(currSlide);
+        } else if (personal.checked == false) {
+            alert("개인정보수집에 동의해주세요.")
+        } else {
+            $(prevBtn).css("display", "flex");
+            $(save).css("display", "none");
+            $(two).css("opacity", "1");
+            $(box2).css("opacity", "1");
+            // prevBtn[0].style.display = 'flex';
+            // save[0].style.display = 'none';
+            // two[0].style.opacity = '1';
+            // box2[0].style.opacity = '1';
+        }
+    } else if (currSlide == 2) {
+        console.log(currSlide);
+        save[0].style.display = 'none';
+        prevBtn[0].style.display = 'flex';
+        two[0].style.opacity = '1';
+        three[0].style.opacity = '1';
+        box2[0].style.opacity = '1';
+        box3[0].style.opacity = '1';
+    } else if (currSlide == 3) {
+        console.log(currSlide);
+        prevBtn[0].style.display = 'flex';
+        save[0].style.display = 'flex';
+        sub[0].style.display = 'flex';
+        next[0].style.display = 'none';
+        two[0].style.opacity = '1';
+        three[0].style.opacity = '1';
+        four[0].style.opacity = '1';
+        box2[0].style.opacity = '1';
+        box3[0].style.opacity = '1';
+        box4[0].style.opacity = '1';
     } 
 });
 prevBtn.addEventListener("click", () => {
@@ -56,85 +104,22 @@ prevBtn.addEventListener("click", () => {
     } else {
         currSlide++;
     }
-});
-
-//버튼 show/hidden + 표시줄 show/hidden
-function toggleNextBtn() {
-    //버튼선택
-    const prev = document.getElementsByClassName('prevbtn');
-    const next = document.getElementsByClassName('nextbtn');
-    const save = document.getElementsByClassName('savebtn');
-    const sub = document.getElementsByClassName('submitbtn');
-    const two = document.getElementsByClassName('two');
-    const three = document.getElementsByClassName('three');
-    const four = document.getElementsByClassName('four');
-    const box2 = document.getElementsByClassName('box2');
-    const box3 = document.getElementsByClassName('box3');
-    const box4 = document.getElementsByClassName('box4');
-
-    if (currSlide == 1) {
-        if( name.value == "" || major.value == "" || grade.value =="" ||
-        phone.value=="" || email.value == "" ) {
-            alert("필수 입력란이 비어있습니다. 확인해주세요.")
-            console.log(currSlide);
-        } else if (personal.checked == false) {
-            alert("개인정보수집에 동의해주세요.")
-        } else {
-            prev[0].style.display = 'flex';
-            save[0].style.display = 'none';
-            two[0].style.opacity = '1';
-            box2[0].style.opacity = '1';
-        }
-    } else if (currSlide == 2) {
-        console.log(currSlide);
-        save[0].style.display = 'none';
-        prev[0].style.display = 'flex';
-        two[0].style.opacity = '1';
-        three[0].style.opacity = '1';
-        box2[0].style.opacity = '1';
-        box3[0].style.opacity = '1';
-    } else if (currSlide == 3) {
-        console.log(currSlide);
-        prev[0].style.display = 'flex';
-        save[0].style.display = 'flex';
-        sub[0].style.display = 'flex';
-        next[0].style.display = 'none';
-        two[0].style.opacity = '1';
-        three[0].style.opacity = '1';
-        four[0].style.opacity = '1';
-        box2[0].style.opacity = '1';
-        box3[0].style.opacity = '1';
-        box4[0].style.opacity = '1';
-    }
-}
-function togglePrevBtn() {
-    //버튼선택
-    const prev = document.getElementsByClassName('prevbtn');
-    const next = document.getElementsByClassName('nextbtn');
-    const save = document.getElementsByClassName('savebtn');
-    const sub = document.getElementsByClassName('submitbtn');
-    const two = document.getElementsByClassName('two');
-    const three = document.getElementsByClassName('three');
-    const four = document.getElementsByClassName('four');
-    const box2 = document.getElementsByClassName('box2');
-    const box3 = document.getElementsByClassName('box3');
-    const box4 = document.getElementsByClassName('box4');
 
     if (currSlide == 2) {
-        prev[0].style.display = 'none';
+        prevBtn[0].style.display = 'none';
         save[0].style.display = 'none';
         two[0].style.opacity = '0';
         box2[0].style.opacity = '0';
     } else if (currSlide == 3) {
         save[0].style.display = 'none';
-        prev[0].style.display = 'flex';
+        prevBtn[0].style.display = 'flex';
         two[0].style.opacity = '1';
         three[0].style.opacity = '0';
         box2[0].style.opacity = '1';
         box3[0].style.opacity = '0';
     } else if (currSlide == 4) {
         save[0].style.display = 'none';
-        prev[0].style.display = 'flex';
+        prevBtn[0].style.display = 'flex';
         next[0].style.display = 'flex';
         sub[0].style.display = 'none';
         two[0].style.opacity = '1';
@@ -144,7 +129,86 @@ function togglePrevBtn() {
         box3[0].style.opacity = '1';
         box4[0].style.opacity = '0';
     }
-}
+});
+
+// //버튼 show/hidden + 표시줄 show/hidden
+// function toggleNextBtn() {
+//     //버튼선택
+
+
+//     if (currSlide == 1) {
+//         if( name.value == "" || major.value == "" || grade.value =="" ||
+//         phone.value=="" || email.value == "" ) {
+//             alert("필수 입력란이 비어있습니다. 확인해주세요.")
+//             console.log(currSlide);
+//         } else if (personal.checked == false) {
+//             alert("개인정보수집에 동의해주세요.")
+//         } else {
+//             prev[0].style.display = 'flex';
+//             save[0].style.display = 'none';
+//             two[0].style.opacity = '1';
+//             box2[0].style.opacity = '1';
+//         }
+//     } else if (currSlide == 2) {
+//         console.log(currSlide);
+//         save[0].style.display = 'none';
+//         prev[0].style.display = 'flex';
+//         two[0].style.opacity = '1';
+//         three[0].style.opacity = '1';
+//         box2[0].style.opacity = '1';
+//         box3[0].style.opacity = '1';
+//     } else if (currSlide == 3) {
+//         console.log(currSlide);
+//         prev[0].style.display = 'flex';
+//         save[0].style.display = 'flex';
+//         sub[0].style.display = 'flex';
+//         next[0].style.display = 'none';
+//         two[0].style.opacity = '1';
+//         three[0].style.opacity = '1';
+//         four[0].style.opacity = '1';
+//         box2[0].style.opacity = '1';
+//         box3[0].style.opacity = '1';
+//         box4[0].style.opacity = '1';
+//     }
+// }
+// function togglePrevBtn() {
+//     //버튼선택
+//     const prev = document.getElementsByClassName('prevbtn');
+//     const next = document.getElementsByClassName('nextbtn');
+//     const save = document.getElementsByClassName('savebtn');
+//     const sub = document.getElementsByClassName('submitbtn');
+//     const two = document.getElementsByClassName('two');
+//     const three = document.getElementsByClassName('three');
+//     const four = document.getElementsByClassName('four');
+//     const box2 = document.getElementsByClassName('box2');
+//     const box3 = document.getElementsByClassName('box3');
+//     const box4 = document.getElementsByClassName('box4');
+
+//     if (currSlide == 2) {
+//         prev[0].style.display = 'none';
+//         save[0].style.display = 'none';
+//         two[0].style.opacity = '0';
+//         box2[0].style.opacity = '0';
+//     } else if (currSlide == 3) {
+//         save[0].style.display = 'none';
+//         prev[0].style.display = 'flex';
+//         two[0].style.opacity = '1';
+//         three[0].style.opacity = '0';
+//         box2[0].style.opacity = '1';
+//         box3[0].style.opacity = '0';
+//     } else if (currSlide == 4) {
+//         save[0].style.display = 'none';
+//         prev[0].style.display = 'flex';
+//         next[0].style.display = 'flex';
+//         sub[0].style.display = 'none';
+//         two[0].style.opacity = '1';
+//         three[0].style.opacity = '1';
+//         four[0].style.opacity = '0';
+//         box2[0].style.opacity = '1';
+//         box3[0].style.opacity = '1';
+//         box4[0].style.opacity = '0';
+//     }
+// }
 
 //글자수제한
 $('#question1').keyup(function(e) {
