@@ -6,6 +6,7 @@ module.exports = {
     index : './static/src/index.js',
     applyevent : './static/src/applyevent.js',
     localStorage : './static/src/localStorage.js',
+    script :'./static/src/script.js',
   },
   output: {
     path: path.resolve(__dirname, 'static', 'public'),

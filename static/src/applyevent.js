@@ -59,9 +59,6 @@ prevBtn.addEventListener("click", () => {
     }
 });
 
-document.querySelector('.prevbtn').addEventListener('click', togglePrevBtn());
-document.querySelector('.nextbtn').addEventListener('click', toggleNextBtn());
-
 //버튼 show/hidden + 표시줄 show/hidden
 function toggleNextBtn() {
     console.log("되긴하지??");
