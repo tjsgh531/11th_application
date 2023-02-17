@@ -4,8 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{% static 'styles/main.css' %}" type="text/css">
     <title>경상국립대학교 멋쟁이사자처럼 11기</title>
+    
+    <link rel="shortcut icon" href="{% static 'img/favicon.png'%}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" type="text/css">
+    
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
     <script src="{% static 'public/index.js' %}" defer></script>
     <script src="{% static 'public/ .js' %}" defer></script>
@@ -21,15 +24,15 @@
         <div class="nav_bar">
           <div class="nav_item">지원서 작성</div>
           <div class="nav_item">동아리 소개</div>
-          <a href="{% url 'login' %}"><div class="nav_item loginBtn logoutEle">로그인/회원가입</div></a>
-          <div class="nav_item loginBtn loginEle unactive">마이페이지</div>
+          <a href="{% url 'login' %}"><div class="nav_item loginBtn ">로그인/회원가입</div></a>
+          <div class="nav_item loginBtn  ">마이페이지</div>
           <div class="underbar"></div>
         </div>
       </nav>
   
       <div class="contents ">
 
-        <div class="textContent logoutEle">
+        <div class="textContent ">
           <div class="sub_text">
             2.20 ~ 3.07 지원서 접수
           </div>
@@ -40,21 +43,23 @@
           </div>
         </div>
 
-        <div class="btn applyBtn logoutEle">
+        <div class="btn applyBtn ">
           <a href="{% url 'apply' %}">지원하기<i style="margin-left:3px" class="fa-solid fa-angle-right"></i></a>
         </div>
 
 
-        <div class="textContent2 loginEle unactive">
+        <div class="textContent2  ">
           지원서 접수가<br>완료 되었습니다.
         </div>
-        <div class="loginBtns loginEle unactive">
+        <div class="loginBtns  ">
           <div class="btn"><i style="margin-left:3px" class="fa-solid fa-angle-left"></i>수정하러가기</div>
           <div class="btn">지원 취소하기<i style="margin-left:3px" class="fa-solid fa-angle-right"></i></div>
         </div>
 
       </div>
-
+      <footer>
+        <div class="footerItem"></div>
+      </footer>
     </div>
   </body>
 </html>
