@@ -39,57 +39,63 @@
                 {% csrf_token %}
                 <div class="post">
                     <input style="display:none;" id="login" name="login" value="{{user.email}}" >
-                    <div class="namE">
-                        <label for="name"><span>*</span>  성명</label>
-                        <input type="text" id="name" name="name" value="{{apply.name}}" />
+                    <div class="inputwrap">
+                        <div class="namE">
+                            <label for="name"><span>*</span>  성명</label>
+                            <input type="text" id="name" name="name" value="{{apply.name}}" />
+                        </div>
+                        <div class="majoR">
+                            <label for="major"><span>*</span>  학번/학과</label>
+                            <input type="text" id="major" name="major" value="{{apply.major}}" />
+                        </div>
                     </div>
-                    <div class="majoR">
-                        <label for="major"><span>*</span>  학번/학과</label>
-                        <input type="text" id="major" name="major" value="{{apply.major}}" />
+                    <div class="inputwrap">
+                        <div class="gradE">
+                            <label for="grade"><span>*</span> 학년</label>
+                            <select name="grade" id="grade">
+                                <option value>-선택-</option>
+                                {% if apply.grade == 4 %}
+                                <option value="04" selected>4학년</option>
+                                <option value="03">3학년</option>
+                                <option value="02">2학년</option>
+                                <option value="01">1학년</option>
+                                {% elif  apply.grade == 3 %}
+                                <option value="04">4학년</option>
+                                <option value="03" selected>3학년</option>
+                                <option value="02">2학년</option>
+                                <option value="01">1학년</option>
+                                {% elif  apply.grade == 2 %}
+                                <option value="04">4학년</option>
+                                <option value="03">3학년</option>
+                                <option value="02" selected>2학년</option>
+                                <option value="01">1학년</option>
+                                {% elif  apply.grade == 1 %}
+                                <option value="04">4학년</option>
+                                <option value="03">3학년</option>
+                                <option value="02">2학년</option>
+                                <option value="01" selected>1학년</option>
+                                {% else %}
+                                <option value="04">4학년</option>
+                                <option value="03">3학년</option>
+                                <option value="02">2학년</option>
+                                <option value="01">1학년</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div class="phonE">
+                            <label for="phone"><span>*</span>  연락처</label>
+                            <input type="tel" id="phone" name="phone" value="{{apply.phone}}" />
+                        </div>
                     </div>
-                    <div class="gradE">
-                        <label for="grade"><span>*</span> 학년</label>
-                        <select name="grade" id="grade">
-                            <option value>-선택-</option>
-                            {% if apply.grade == 4 %}
-                            <option value="04" selected>4학년</option>
-                            <option value="03">3학년</option>
-                            <option value="02">2학년</option>
-                            <option value="01">1학년</option>
-                            {% elif  apply.grade == 3 %}
-                            <option value="04">4학년</option>
-                            <option value="03" selected>3학년</option>
-                            <option value="02">2학년</option>
-                            <option value="01">1학년</option>
-                            {% elif  apply.grade == 2 %}
-                            <option value="04">4학년</option>
-                            <option value="03">3학년</option>
-                            <option value="02" selected>2학년</option>
-                            <option value="01">1학년</option>
-                            {% elif  apply.grade == 1 %}
-                            <option value="04">4학년</option>
-                            <option value="03">3학년</option>
-                            <option value="02">2학년</option>
-                            <option value="01" selected>1학년</option>
-                            {% else %}
-                            <option value="04">4학년</option>
-                            <option value="03">3학년</option>
-                            <option value="02">2학년</option>
-                            <option value="01">1학년</option>
-                            {% endif %}
-                        </select>
-                    </div>
-                    <div class="phonE">
-                        <label for="phone"><span>*</span>  연락처</label>
-                        <input type="tel" id="phone" name="phone" value="{{apply.phone}}" />
-                    </div>
-                    <div class="emaiL">
-                        <label for="phone"><span>*</span>  이메일</label>
-                        <input type="email" id="email" name="email" value="{{apply.email}}" />
-                    </div>
-                    <div class="giT">
-                        <label for="git">깃허브주소</label>
-                        <input type="text" id="git" name="git" value="{{apply.git}}" />
+                    <div class="inputwrap">
+                        <div class="emaiL">
+                            <label for="phone"><span>*</span>  이메일</label>
+                            <input type="email" id="email" name="email" value="{{apply.email}}" />
+                        </div>
+                        <div class="giT">
+                            <label for="git">깃허브주소</label>
+                            <input type="text" id="git" name="git" value="{{apply.git}}" />
+                        </div>
                     </div>
                     <hr class="im">
                     <div class="personaL">
@@ -133,7 +139,7 @@
                 <div class="post">
                     <div class="q3">
                         <label for="question3">3. 멋쟁이사자처럼 대학은 협업과 팀워크를 중요한 가치로 생각하는 공동체입니다. 지원자 본인이 협업과 팀워크를 진행
-                            <br/>해보았던 경험과, 그 경험을 멋쟁이 사자처럼 대학에서 어떻게 적용시킬 수 있을지 작성해주세요. (500자 이내)</label><br/>
+                            해보았던 경험과, 그 경험을 멋쟁이 사자처럼 대학에서 어떻게 적용시킬 수 있을지 작성해주세요. (500자 이내)</label><br/>
                         <textarea name="question3" id="question3" maxlength="500" tabindex = "-1">{{apply.question3}}</textarea>
                         <div class="count">
                             <p class="textC3">0</p>
@@ -141,7 +147,7 @@
                         </div>
                     </div>
                     <div class="q4">
-                        <label for="question4">4. 멋쟁이사자처럼 대학은 최소 주 2회 모임 & 10시간 이상의 시간 투자를 권장합니다. 활동 기간동안 얼마나 열정적으<br/>로, 매주 얼만큼의 시간을 할애하실 수 있는지 작성해주세요. (500자 이내)</label><br/>
+                        <label for="question4">4. 멋쟁이사자처럼 대학은 최소 주 2회 모임 & 10시간 이상의 시간 투자를 권장합니다. 활동 기간동안 얼마나 열정적으로, 매주 얼만큼의 시간을 할애하실 수 있는지 작성해주세요. (500자 이내)</label><br/>
                         <textarea name="question4" id="question4" maxlength="500" tabindex = "-1">{{apply.question4}}</textarea>
                         <div class="count">
                             <p class="textC4">0</p>

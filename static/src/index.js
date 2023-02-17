@@ -31,14 +31,14 @@ if (WEBGL.isWebGLAvailable()) {
 
   //마우스 이벤트
   //마우스 위치에 따라 하자
-  let speed = 0.001;
+  let speed = 0.002;
   
   window.addEventListener('mousemove',(e)=>{
     
     //speed = 0.005*(Math.abs(sizes.width/2 - e.clientX) / (sizes.width/2) + Math.abs(sizes.height/2 - e.clientY) / (sizes.height / 2));
     speed = 0.004* (Math.abs(sizes.width/2 - e.clientX) / (sizes.width/2));
 
-    if(speed <= 0.001) speed = 0.001;
+    if(speed <= 0.001) speed = 0.002;
   });
 
 
