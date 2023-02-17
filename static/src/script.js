@@ -1,18 +1,7 @@
 class Script{
     constructor(){
         this.nav();
-        /* 임시 로그인 
-        let login = false;
-        
-        if(login){
-            login = false;
-            this.logout();
-        }
-        else{
-            login = true;
-            this.login();
-        }
-        */
+
     }
 
     nav(){
@@ -31,32 +20,8 @@ class Script{
             });
         });
     }
-
-    login(){
-        const logoutEle = document.querySelectorAll('.logoutEle');
-        const loginEle = document.querySelectorAll('.loginEle');
-        
-        loginEle.forEach(e => {
-            e.classList.remove('unactive');
-        });
-
-        logoutEle.forEach(e => {
-            e.classList.add('unactive');
-        });
-    }
-    
-    logout(){
-        const logoutEle = document.querySelectorAll('.logoutEle');
-        const loginEle = document.querySelectorAll('.loginEle');
-        
-        loginEle.forEach(e => {
-            e.classList.add('unactive');
-        });
-
-        logoutEle.forEach(e => {
-            e.classList.remove('unactive');
-        });
-    }
 }
 
-module.exports = {Script}
+window.onload = ()=>{
+    const script = new Script();
+}

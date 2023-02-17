@@ -1,8 +1,6 @@
 import * as THREE from 'three'
 import { WEBGL } from './webgl'
-import { Script } from './script.js';
 
-const script = new Script();
 if (WEBGL.isWebGLAvailable()) {
 
   const FogColor = 0x004fff;

@@ -18,6 +18,7 @@ const sub = document.getElementsByClassName('submitbtn');
 const two = document.getElementsByClassName('two');
 const three = document.getElementsByClassName('three');
 const four = document.getElementsByClassName('four');
+console.log(two);
 const box2 = document.getElementsByClassName('box2');
 const box3 = document.getElementsByClassName('box3');
 const box4 = document.getElementsByClassName('box4');
@@ -34,7 +35,9 @@ let currSlide = 1;
 nextBtn.addEventListener("click", () => {
     if( name.value == "" || major.value == "" || grade.value =="" ||
     phone.value=="" || email.value == "" ) {
+        alert("필수 입력란이 비어있습니다. 확인해주세요.")
     } else if (personal.checked == false) {
+        alert("개인정보수집에 동의해주세요.")
     } else {
         // 이후 버튼 누를 경우 현재 슬라이드를 변경
         currSlide++;
@@ -50,47 +53,36 @@ nextBtn.addEventListener("click", () => {
             currSlide--;
         }
     }
-    console.log(currSlide);
-    if (currSlide == 1) {
+    if (currSlide == 2) {
         if( name.value == "" || major.value == "" || grade.value =="" ||
         phone.value=="" || email.value == "" ) {
-            alert("필수 입력란이 비어있습니다. 확인해주세요.")
-            console.log(currSlide);
         } else if (personal.checked == false) {
-            alert("개인정보수집에 동의해주세요.")
         } else {
             $(prevBtn).css("display", "flex");
-            $(save).css("display", "none");
             $(two).css("opacity", "1");
             $(box2).css("opacity", "1");
-            // prevBtn[0].style.display = 'flex';
-            // save[0].style.display = 'none';
-            // two[0].style.opacity = '1';
-            // box2[0].style.opacity = '1';
+            console.log(currSlide);
         }
-    } else if (currSlide == 2) {
-        console.log(currSlide);
-        save[0].style.display = 'none';
-        prevBtn[0].style.display = 'flex';
-        two[0].style.opacity = '1';
-        three[0].style.opacity = '1';
-        box2[0].style.opacity = '1';
-        box3[0].style.opacity = '1';
     } else if (currSlide == 3) {
         console.log(currSlide);
-        prevBtn[0].style.display = 'flex';
-        save[0].style.display = 'flex';
-        sub[0].style.display = 'flex';
-        next[0].style.display = 'none';
-        two[0].style.opacity = '1';
-        three[0].style.opacity = '1';
-        four[0].style.opacity = '1';
-        box2[0].style.opacity = '1';
-        box3[0].style.opacity = '1';
-        box4[0].style.opacity = '1';
+        $(prevBtn).css("display", "flex");
+        $(two).css("opacity", "1");
+        $(three).css("opacity", "1");
+        $(box2).css("opacity", "1");
+        $(box3).css("opacity", "1");
+    } else if (currSlide == 4) {
+        console.log(currSlide);
+        $(prevBtn).css("display", "flex");
+        $(sub).css("display", "flex");
+        $(nextBtn).css("display", "none");
+        $(two).css("opacity", "1");
+        $(three).css("opacity", "1");
+        $(four).css("opacity", "1");
+        $(box2).css("opacity", "1");
+        $(box3).css("opacity", "1");
+        $(box4).css("opacity", "1");
     } 
 });
-
 prevBtn.addEventListener("click", () => {
     // 이전 버튼 누를 경우 현재 슬라이드를 변경
     currSlide--;
@@ -105,100 +97,27 @@ prevBtn.addEventListener("click", () => {
     } else {
         currSlide++;
     }
-<<<<<<< HEAD
-=======
-});
-
-document.querySelector('.prevbtn').addEventListener('click', togglePrevBtn());
-document.querySelector('.nextbtn').addEventListener('click', toggleNextBtn());
-
-//버튼 show/hidden + 표시줄 show/hidden
-function toggleNextBtn() {
-    console.log("되긴하지??");
-    //버튼선택
-    const prev = document.getElementsByClassName('prevbtn');
-    const next = document.getElementsByClassName('nextbtn');
-    const save = document.getElementsByClassName('savebtn');
-    const sub = document.getElementsByClassName('submitbtn');
-    const two = document.getElementsByClassName('two');
-    const three = document.getElementsByClassName('three');
-    const four = document.getElementsByClassName('four');
-    const box2 = document.getElementsByClassName('box2');
-    const box3 = document.getElementsByClassName('box3');
-    const box4 = document.getElementsByClassName('box4');
-
+    console.log(currSlide);
     if (currSlide == 1) {
-        if( name.value == "" || major.value == "" || grade.value =="" ||
-        phone.value=="" || email.value == "" ) {
-            alert("필수 입력란이 비어있습니다. 확인해주세요.")
-            console.log(currSlide);
-        } else if (personal.checked == false) {
-            alert("개인정보수집에 동의해주세요.")
-        } else {
-            prev[0].style.display = 'flex';
-            save[0].style.display = 'none';
-            two[0].style.opacity = '1';
-            box2[0].style.opacity = '1';
-        }
+        $(prevBtn).css("display", "none");
+        $(two).css("opacity", "0");
+        $(box2).css("opacity", "0");
     } else if (currSlide == 2) {
-        console.log(currSlide);
-        save[0].style.display = 'none';
-        prev[0].style.display = 'flex';
-        two[0].style.opacity = '1';
-        three[0].style.opacity = '1';
-        box2[0].style.opacity = '1';
-        box3[0].style.opacity = '1';
+        $(prevBtn).css("display", "flex");
+        $(two).css("opacity", "1");
+        $(three).css("opacity", "0");
+        $(box2).css("opacity", "1");
+        $(box3).css("opacity", "0");
     } else if (currSlide == 3) {
-        console.log(currSlide);
-        prev[0].style.display = 'flex';
-        save[0].style.display = 'flex';
-        sub[0].style.display = 'flex';
-        next[0].style.display = 'none';
-        two[0].style.opacity = '1';
-        three[0].style.opacity = '1';
-        four[0].style.opacity = '1';
-        box2[0].style.opacity = '1';
-        box3[0].style.opacity = '1';
-        box4[0].style.opacity = '1';
-    }
-}
-function togglePrevBtn() {
-    //버튼선택
-    const prev = document.getElementsByClassName('prevbtn');
-    const next = document.getElementsByClassName('nextbtn');
-    const save = document.getElementsByClassName('savebtn');
-    const sub = document.getElementsByClassName('submitbtn');
-    const two = document.getElementsByClassName('two');
-    const three = document.getElementsByClassName('three');
-    const four = document.getElementsByClassName('four');
-    const box2 = document.getElementsByClassName('box2');
-    const box3 = document.getElementsByClassName('box3');
-    const box4 = document.getElementsByClassName('box4');
->>>>>>> 84294c717f1c846fb7e2b05b7875472521b1969a
-
-    if (currSlide == 2) {
-        prevBtn[0].style.display = 'none';
-        save[0].style.display = 'none';
-        two[0].style.opacity = '0';
-        box2[0].style.opacity = '0';
-    } else if (currSlide == 3) {
-        save[0].style.display = 'none';
-        prevBtn[0].style.display = 'flex';
-        two[0].style.opacity = '1';
-        three[0].style.opacity = '0';
-        box2[0].style.opacity = '1';
-        box3[0].style.opacity = '0';
-    } else if (currSlide == 4) {
-        save[0].style.display = 'none';
-        prevBtn[0].style.display = 'flex';
-        next[0].style.display = 'flex';
-        sub[0].style.display = 'none';
-        two[0].style.opacity = '1';
-        three[0].style.opacity = '1';
-        four[0].style.opacity = '0';
-        box2[0].style.opacity = '1';
-        box3[0].style.opacity = '1';
-        box4[0].style.opacity = '0';
+        $(prevBtn).css("display", "flex");
+        $(nextBtn).css("display", "flex");
+        $(sub).css("display", "none");
+        $(two).css("opacity", "1");
+        $(three).css("opacity", "1");
+        $(four).css("opacity", "0");
+        $(box2).css("opacity", "1");
+        $(box3).css("opacity", "1");
+        $(box4).css("opacity", "0");
     }
 });
 

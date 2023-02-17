@@ -1,4 +1,6 @@
 {% load static %}
+{% load socialaccount %}		
+{% providers_media_js %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,6 @@
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'styles/applystyle.css'%}" type="text/css">
     <script src="{% static 'public/applyevent.js' %}" defer></script>
-    <script src="{% static 'public/localStorage.js' %}" defer></script>
 </head>
 <body>
     <header></header>
@@ -23,17 +24,21 @@
                     <img src="{% static 'img/line2.png' %}" class="line two"/>
                     <img src="{% static 'img/line3.png' %}" class="line three"/>
                     <img src="{% static 'img/line4.png' %}" class="line four"/>
-               </div>
+                </div>
                 <div class="pagination">
                     <div class="box1"></div>
                     <div class="box2"></div>
                     <div class="box3"></div>
                     <div class="box4"></div>
                 </div>
+                <p class="notice">
+                    * 모집 기간 중에는 언제든지 지원서를 수정할 수 있습니다. *
+                </p>
             </div>
-            <form class="questionbox" action="{% url 'update' apply.id %}" method="post">
+            <form class="questionbox" action="{% url 'update' user.email %}" method="post">
                 {% csrf_token %}
                 <div class="post">
+                    <input style="display:none;" id="login" name="login" value="{{user.email}}" >
                     <div class="namE">
                         <label for="name"><span>*</span>  성명</label>
                         <input type="text" id="name" name="name" value="{{apply.name}}" />
@@ -46,10 +51,32 @@
                         <label for="grade"><span>*</span> 학년</label>
                         <select name="grade" id="grade">
                             <option value>-선택-</option>
+                            {% if apply.grade == 4 %}
+                            <option value="04" selected>4학년</option>
+                            <option value="03">3학년</option>
+                            <option value="02">2학년</option>
+                            <option value="01">1학년</option>
+                            {% elif  apply.grade == 3 %}
+                            <option value="04">4학년</option>
+                            <option value="03" selected>3학년</option>
+                            <option value="02">2학년</option>
+                            <option value="01">1학년</option>
+                            {% elif  apply.grade == 2 %}
+                            <option value="04">4학년</option>
+                            <option value="03">3학년</option>
+                            <option value="02" selected>2학년</option>
+                            <option value="01">1학년</option>
+                            {% elif  apply.grade == 1 %}
+                            <option value="04">4학년</option>
+                            <option value="03">3학년</option>
+                            <option value="02">2학년</option>
+                            <option value="01" selected>1학년</option>
+                            {% else %}
                             <option value="04">4학년</option>
                             <option value="03">3학년</option>
                             <option value="02">2학년</option>
                             <option value="01">1학년</option>
+                            {% endif %}
                         </select>
                     </div>
                     <div class="phonE">
@@ -129,20 +156,15 @@
                     </div>
                 </div>
                 <div class="btnwrap">
-                    <div class="prevbtn" onclick="togglePrevBtn()">
+                    <div class="prevbtn">
                         <i class="fa-solid fa-angle-left"></i>
                         이전 단계
                     </div>
-                    <div class="savebtn" onclick="toggleSaveBtn()">임시 저장</div>
-                    <div class="nextbtn" onclick="toggleNextBtn()">
+                    <div class="nextbtn">
                         다음 단계
                         <i class="fa-solid fa-angle-right"></i>
                     </div>
-                    <div class="submitbtn" type="submit">
-                        제출하기
-                        <img>
-                    </div>
-                    <input type="submit" value="제출">
+                    <input class="submitbtn" type="submit"/>
                 </div>
             </form>
         </div>
