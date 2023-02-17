@@ -1,21 +1,18 @@
 class Script{
     constructor(){
         this.nav();
-        /* 임시 로그인 */
+        /* 임시 로그인 
         let login = false;
         
-        document.querySelectorAll('.loginBtn').forEach(element => {
-            element.addEventListener('click', ()=>{
-                if(login){
-                    login = false;
-                    this.logout();
-                }
-                else{
-                    login = true;
-                    this.login();
-                }
-            });
-        });
+        if(login){
+            login = false;
+            this.logout();
+        }
+        else{
+            login = true;
+            this.login();
+        }
+        */
     }
 
     nav(){
