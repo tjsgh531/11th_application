@@ -9,8 +9,10 @@
     <script src="{% static 'src/jquery-3.6.3.min.js' %}"></script>
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'styles/applystyle.css'%}" type="text/css">
-    <script src="{% static 'public/applyevent.js' %}" defer></script>
-    <script src="{% static 'public/localStorage.js' %}" defer></script>
+    
+    <script src="{% static 'public/applyevent.js' %}" defer ></script>
+    <script src="{% static 'public/localStorage.js' %}" defer ></script>
+
 </head>
 <body>
     <header></header>
@@ -129,12 +131,12 @@
                     </div>
                 </div>
                 <div class="btnwrap">
-                    <div class="prevbtn" onclick="togglePrevBtn()">
+                    <div class="prevbtn">
                         <i class="fa-solid fa-angle-left"></i>
                         이전 단계
                     </div>
-                    <div class="savebtn" onclick="toggleSaveBtn()">임시 저장</div>
-                    <div class="nextbtn" onclick="toggleNextBtn()">
+                    <div class="savebtn" >임시 저장</div>
+                    <div class="nextbtn" >
                         다음 단계
                         <i class="fa-solid fa-angle-right"></i>
                     </div>
@@ -148,6 +150,5 @@
         </div>
     </section>
     <footer></footer>
-
 </body>
 </html>

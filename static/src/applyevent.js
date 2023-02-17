@@ -42,6 +42,7 @@ nextBtn.addEventListener("click", () => {
         }
     } 
 });
+
 prevBtn.addEventListener("click", () => {
     // 이전 버튼 누를 경우 현재 슬라이드를 변경
     currSlide--;
@@ -58,8 +59,12 @@ prevBtn.addEventListener("click", () => {
     }
 });
 
+document.querySelector('.prevbtn').addEventListener('click', togglePrevBtn());
+document.querySelector('.nextbtn').addEventListener('click', toggleNextBtn());
+
 //버튼 show/hidden + 표시줄 show/hidden
 function toggleNextBtn() {
+    console.log("되긴하지??");
     //버튼선택
     const prev = document.getElementsByClassName('prevbtn');
     const next = document.getElementsByClassName('nextbtn');

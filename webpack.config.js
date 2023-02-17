@@ -3,12 +3,12 @@ const path = require('path')
 module.exports = {
   mode: 'production',
   entry: {
-    index : './src/index.js',
-    applyevent : './src/applyevent.js',
-    localStorage : './src/localStorage.js',
+    index : './static/src/index.js',
+    applyevent : './static/src/applyevent.js',
+    localStorage : './static/src/localStorage.js',
   },
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'static', 'public'),
     filename: '[name].js',
   },
   performance: {
