@@ -15,6 +15,7 @@ class Migration(migrations.Migration):
             name='formmodel',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('login', models.CharField(max_length=40)),
                 ('name', models.CharField(max_length=100)),
                 ('major', models.CharField(max_length=50)),
                 ('grade', models.IntegerField()),

@@ -1,4 +1,6 @@
 {% load static %}
+{% load socialaccount %}		
+{% providers_media_js %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +38,7 @@
             <form class="questionbox" action="{% url 'apply' %}" method="post">
                 {% csrf_token %}
                 <div class="post">
+                    <input style="display:none;" id="login" name="login" value="{{user.email}}" >
                     <div class="inputwrap">
                         <div class="namE">
                             <label for="name"><span>*</span>  성명</label>
@@ -145,9 +148,7 @@
                         다음 단계
                         <i class="fa-solid fa-angle-right"></i>
                     </div>
-                    <div class="submitbtn" type="submit">
-                        제출하기
-                    </div>
+                    <input class="submitbtn" type="submit"/>
                 </div>
             </form>
         </div>
