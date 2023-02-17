@@ -111,7 +111,7 @@ textarea::-webkit-scrollbar-track{
 }
 .applyback {
     width: 750px;
-    height: 745px;
+    height: 100vh;
     margin: 0px auto;
     padding: 0 0 35px 0;
     background-image: url(../img/background.png);

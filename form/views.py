@@ -53,3 +53,6 @@ def delete(request, user_email):
     apply = formmodel.objects.get(login=user_email)
     apply.delete()
     return redirect('index')
+
+def introduce(request):
+    return render(request, 'introduce.html')
