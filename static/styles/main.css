@@ -1,7 +1,26 @@
+/* font설정 */
 @font-face {
   font-family: 'Pretendard-Regular';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-Medium';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-SemiBold';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+  font-weight: 600;
   font-style: normal;
 }
 .unactive{
@@ -63,6 +82,7 @@ html, body{
   font-family: 'Pretendard-Regular';
 
   cursor: pointer;
+  transition: all 0.2s;
 }
 .nav_item:hover{
   color:#FF7710;
@@ -85,7 +105,7 @@ html, body{
 
   width: 100%;
   height: calc(100vh - 4rem);
-  padding: 5rem;
+  padding: 7rem;
 }
 .textContent{
   position: relative;
@@ -112,21 +132,21 @@ html, body{
   width: fit-content;
   padding:0.5rem 3rem;
 
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 3rem;
 
   color: white;
   font-family: 'Pretendard-Regular';
   
   cursor: pointer;
+  transition: all 0.3s ;
 }
 
 .btn:hover{
   color: white;
-  border: 2px solid #FF7710;
+  border: 1px solid #FF7710;
   background-color: #FF7710;
   
-  font-weight: 900;
 }
 
 /* 로그인 스타일 */
@@ -146,4 +166,16 @@ html, body{
   
   display: flex;
   justify-content: space-evenly;
+}
+
+/* 지희수정 */
+span {
+  font-family: 'Pretendard-SemiBold';
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: white;
 }
