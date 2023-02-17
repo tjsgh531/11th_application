@@ -9,14 +9,7 @@
     <script src="{% static 'src/jquery-3.6.3.min.js' %}"></script>
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'styles/applystyle.css'%}" type="text/css">
-<<<<<<< HEAD
     <script src="{% static 'public/applyevent.js' %}" defer></script>
-=======
-    
-    <script src="{% static 'public/applyevent.js' %}" defer ></script>
-    <script src="{% static 'public/localStorage.js' %}" defer ></script>
-
->>>>>>> 84294c717f1c846fb7e2b05b7875472521b1969a
 </head>
 <body>
     <header></header>
@@ -36,6 +29,9 @@
                     <div class="box3"></div>
                     <div class="box4"></div>
                 </div>
+                <p class="notice">
+                    * 모집 기간 중에는 언제든지 지원서를 수정할 수 있습니다. *
+                </p>
             </div>
             <form class="questionbox" action="{% url 'apply' %}" method="post">
                 {% csrf_token %}
@@ -139,20 +135,13 @@
                         <i class="fa-solid fa-angle-left"></i>
                         이전 단계
                     </div>
-<<<<<<< HEAD
                     <div class="nextbtn">
-=======
-                    <div class="savebtn" >임시 저장</div>
-                    <div class="nextbtn" >
->>>>>>> 84294c717f1c846fb7e2b05b7875472521b1969a
                         다음 단계
                         <i class="fa-solid fa-angle-right"></i>
                     </div>
                     <div class="submitbtn" type="submit">
                         제출하기
-                        <img>
                     </div>
-                    <input type="submit" value="제출">
                 </div>
             </form>
         </div>
