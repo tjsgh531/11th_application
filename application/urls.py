@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('apply/', include('form.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
