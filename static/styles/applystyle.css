@@ -140,7 +140,6 @@ textarea::-webkit-scrollbar-track{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
 }
 .post:nth-child(3){
     display: flex;
