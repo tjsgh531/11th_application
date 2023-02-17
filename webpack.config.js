@@ -8,11 +8,7 @@ module.exports = {
     localStorage : './static/src/localStorage.js',
   },
   output: {
-<<<<<<< HEAD
     path: path.resolve(__dirname, 'static', 'public'),
-=======
-    path: path.resolve(__dirname,'static', 'public'),
->>>>>>> dc02778c1bc79d144407ccd233494e09f1847231
     filename: '[name].js',
   },
   performance: {
