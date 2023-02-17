@@ -3,7 +3,8 @@ from .models import formmodel
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    applys = formmodel.objects.all()
+    return render(request, 'index.html', {'applys' : applys})
 
 def login(request):
     return render(request, 'login.html')
@@ -11,6 +12,7 @@ def login(request):
 def apply(request):
     if request.method == 'POST':
         apply = formmodel()
+        apply.login = request.POST['login']
         apply.name = request.POST['name']
         apply.major = request.POST['major']
         apply.grade = request.POST['grade']
@@ -27,9 +29,10 @@ def apply(request):
     else:
         return render(request, 'apply.html')
     
-def update(request, apply_id):
-    apply = formmodel.objects.get(id=apply_id)
+def update(request, user_email):
+    apply = formmodel.objects.get(login=user_email)
     if request.method == 'POST':
+        apply.login = request.POST['login']
         apply.name = request.POST['name']
         apply.major = request.POST['major']
         apply.grade = request.POST['grade']
@@ -46,7 +49,7 @@ def update(request, apply_id):
     else:
         return render(request, 'update.html', {'apply':apply})
 
-def delete(request, apply_id):
-    apply = formmodel.objects.get(id=apply_id)
+def delete(request, user_email):
+    apply = formmodel.objects.get(login=user_email)
     apply.delete()
     return redirect('index')
