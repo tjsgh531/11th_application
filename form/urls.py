@@ -4,6 +4,6 @@ from .import views
 urlpatterns = [
     path('login', views.login, name="login"),
     path('apply', views.apply, name="apply"),
-    path('update/<int:apply_id>', views.update, name="update"),
-    path('delete/<int:apply_id>', views.delete, name="delete"),
+    path('update/<str:user_email>', views.update, name="update"),
+    path('delete/<str:user_email>', views.delete, name="delete"),
 ]
