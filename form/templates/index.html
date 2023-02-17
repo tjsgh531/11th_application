@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" type="text/css">
     <title>경상국립대학교 멋쟁이사자처럼 11기</title>
+    <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
     <script src="{% static 'public/index.js' %}" defer></script>
-    <script src="{% static 'public/script.js' %}" defer></script>
+    <script src="{% static 'public/ .js' %}" defer></script>
   </head>
   <body>
     <div class="wrap">
@@ -30,7 +31,7 @@
 
         <div class="textContent logoutEle">
           <div class="sub_text">
-            2.20~3.08 지원서 접수
+            2.20 ~ 3.07 지원서 접수
           </div>
           <div class="main_text">
             경상국립대학교<br>
@@ -40,7 +41,7 @@
         </div>
 
         <div class="btn applyBtn logoutEle">
-          <a href="{% url 'apply' %}">지원하기<span style="margin-left:3px">></span></a>
+          <a href="{% url 'apply' %}">지원하기<i style="margin-left:3px" class="fa-solid fa-angle-right"></i></a>
         </div>
 
 
@@ -48,8 +49,8 @@
           지원서 접수가<br>완료 되었습니다.
         </div>
         <div class="loginBtns loginEle unactive">
-          <div class="btn"><span style="margin-right: 3px;"> < </span>수정하러가기</div>
-          <div class="btn">지원 취소하기<span style="margin-left: 3px;"> > </span></div>
+          <div class="btn"><i style="margin-left:3px" class="fa-solid fa-angle-left"></i>수정하러가기</div>
+          <div class="btn">지원 취소하기<i style="margin-left:3px" class="fa-solid fa-angle-right"></i></div>
         </div>
 
       </div>
