@@ -1,78 +1,48 @@
+{% extends 'nav.html' %}
 {% load static %}
 {% load socialaccount %}		
 {% providers_media_js %}
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>경상국립대학교 멋쟁이사자처럼 11기</title>
-    
-    <link rel="shortcut icon" href="{% static 'img/favicon.png'%}">
-    <link rel="stylesheet" href="{% static 'styles/main.css' %}" type="text/css">
-    
-    <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
-    <script src="{% static 'public/index.js' %}" defer></script>
-    <script src="{% static 'public/script.js' %}" defer></script>
-  </head>
-  <body>
-    <div class="wrap">
-      <canvas id="c"></canvas>
-      <nav class="nav">
-        <div class="logo">
-          <a href="{% url 'index' %}"><img src="{% static 'img/likelion _logo.png' %}"></a>
-        </div>
 
-        <div class="nav_bar">
-          <div class="nav_item">동아리 소개</div>
-          {% if user.is_authenticated %}
-          <a href = "/accounts/logout"><div class="nav_item loginBtn ">로그아웃</div></a>
-          {% else %}
-          <a href="{% url 'login' %}"><div class="nav_item loginBtn ">로그인/회원가입</div></a>
-          {% endif %}
-          <div class="underbar"></div>
-        </div>
-      </nav>
+{% block static %}
+<link rel="shortcut icon" href="{% static 'img/favicon.png'%}">
+<link rel="stylesheet" href="{% static 'styles/main.css' %}" type="text/css">
+<script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
+<script src="{% static 'public/index.js' %}" defer></script>
+{% endblock %}
 
-      {% for apply in applys %}
-      {% if apply.login == user.email %}
-      <div class="contents ">
-        <div class="textContent2 ">
-          지원서 접수가<br>완료 되었습니다.
-        </div>
-        <div class="loginBtns  ">
-          <a href="{% url 'update' user.email %}"><div class="btn"><span style="margin-right: 3px;"> < </span>수정하러가기</div></a>
-          <a href="{% url 'delete' user.email %}"><div class="btn">지원 취소하기<span style="margin-left: 3px;"> > </span></div></a>
-        </div>
-      </div>
-      {% endif %}
-      {% endfor %}
-  
-      <div class="contents ">
-        <div class="textContent ">
-          <div class="sub_text">
-            2.20 ~ 3.07 지원서 접수
-          </div>
-          <div class="main_text">
-            경상국립대학교<br>
-            <span style="color: #FF7710;">멋쟁이사자처럼 11기</span> 여러분<br>
-            환영합니다.
-          </div>
-        </div>
-        {% if user.is_authenticated %}
-        <div class="btn applyBtn ">
-          <a href="{% url 'apply' %}">지원하기<span style="margin-left:3px">></span></a>
-        </div>
-        {% else %}
-        <div class="btn applyBtn ">
-          <a onclick="window.alert('로그인을 해주세요.')">지원하기<span style="margin-left:3px">></span></a>
-        </div>
-        {% endif %}
-
-      </div>
-      <footer>
-        <div class="footerItem"></div>
-      </footer>
+{% block content %}
+{% for apply in applys %}
+{% if apply.login == user.email %}
+<div class="contents ">
+  <div class="textContent2 ">
+    지원서 접수가<br>완료 되었습니다.
+  </div>
+  <div class="loginBtns  ">
+    <a href="{% url 'update' user.email %}"><div class="btn"><span style="margin-right: 3px;"> < </span>수정하러가기</div></a>
+    <a href="{% url 'delete' user.email %}"><div class="btn">지원 취소하기<span style="margin-left: 3px;"> > </span></div></a>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+<div class="contents ">
+  <div class="textContent ">
+    <div class="sub_text">
+      2.20 ~ 3.07 지원서 접수
     </div>
-  </body>
-</html>
+    <div class="main_text">
+      경상국립대학교<br>
+      <span style="color: #FF7710;">멋쟁이사자처럼 11기</span> 여러분<br>
+      환영합니다.
+    </div>
+  </div>
+  {% if user.is_authenticated %}
+  <div class="btn applyBtn ">
+    <a href="{% url 'apply' %}">지원하기<span style="margin-left:3px">></span></a>
+  </div>
+  {% else %}
+  <div class="btn applyBtn ">
+    <a onclick="window.alert('로그인을 해주세요.')">지원하기<span style="margin-left:3px">></span></a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
